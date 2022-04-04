@@ -29,6 +29,10 @@
   background-blend-mode: darken;
 }
 
+main {
+  height: 100vh;
+}
+
 .cover-container {
   max-width: 42em;
 }
