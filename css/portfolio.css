@@ -33,6 +33,11 @@
   background-color: #333;
   border-radius: 21px;
   transform: rotate(30deg);
+  background-color: #e5e5e5;
+    background-image:url(../images/serbona-apps-iPhone-5_SE-screenshot.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:top center;
 }
 
 .product-device::before {
