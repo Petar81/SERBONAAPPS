@@ -3,6 +3,10 @@
     'use strict'
   
     var form = document.getElementById('form');
+    var firstName = document.getElementById('firstName');
+    var lastName = document.getElementById('lastName');
+    var email = document.getElementById('email');
+    var message = document.getElementById('message');
 
     form.addEventListener('submit', function(){
         var xhttp = new XMLHttpRequest();
@@ -13,7 +17,7 @@
         };
         xhttp.open("POST", "send-email.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("fname=Henry&lname=Ford");
+        xhttp.send("fname="+firstName+"&lname="+lastName+"&email="+email+"&message="+message);
     });
   
   })();  
