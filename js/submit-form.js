@@ -8,11 +8,15 @@
     var email = document.getElementById('email');
     var message = document.getElementById('message');
 
-    form.addEventListener('submit', function(){
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+
         var xhttp = new XMLHttpRequest();
+        
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("demo").innerHTML = this.responseText;
+            form.innerHTML = this.responseText;
             }
         };
         xhttp.open("POST", "send-email.php", true);
