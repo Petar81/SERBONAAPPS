@@ -138,7 +138,7 @@
             };
             xhttp.open("POST", "../php/send-email.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("firstName="+firstName.value+"&lastName="+lastName.value+"&email="+email.value+"&message="+message.value);
+            xhttp.send("firstName="+firstName.value+"&lastName="+lastName.value+"&email="+email.value+"&message="+message.value+"&company="+company.value+"&phone="+phone.value+"&address="+address.value+"&country="+country.value+"&zip="+zip.value);
         }
         
       });
