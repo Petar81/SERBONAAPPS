@@ -4,6 +4,20 @@
   
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
     var forms = document.querySelectorAll('.needs-validation');
+    var forma = document.getElementById('form');
+
+    var firstName = document.getElementById('firstName');
+    var lastName = document.getElementById('lastName');
+    var company = document.getElementById('company');
+    var phone = document.getElementById('phone');
+    var email = document.getElementById('email');
+    var address = document.getElementById('address');
+    var country = document.getElementById('country');
+    var zip = document.getElementById('zip');
+    var message = document.getElementById('message');
+
+    var cardFirstName = document.getElementById('cardFirstName');
+    var cardLastName = document.getElementById('cardLastName');
   
     // Loop over them and prevent submission
     Array.prototype.slice.call(forms)
@@ -13,15 +27,11 @@
             event.preventDefault()
             event.stopPropagation()
           }
-  
           form.classList.add('was-validated')
         }, false)
       });
   
-      var firstName = document.getElementById('firstName');
-      var lastName = document.getElementById('lastName');
-      var cardFirstName = document.getElementById('cardFirstName');
-      var cardLastName = document.getElementById('cardLastName');
+      
   
       firstName.addEventListener('input', function (event) {
         cardFirstName.innerHTML = firstName.value + ' ';
@@ -108,5 +118,31 @@
   
       cardCountry.innerHTML = country.value;
       cardState.innerHTML = state.value + ', ';
+
+      function validateEmail(email){
+        var re = /\S+@\S+/;
+        return re.test(email);
+    }
+
+      forma.addEventListener('submit', function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        var isEmailValid = validateEmail(email.value);
+        console.log(isEmailValid );
+        if (firstName.value != '' && lastName.value != '' && company.value != '' && phone.value != '' && isEmailValid && address.value != '' && country.value != '' && zip.value != '' && message.value != '') {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                forma.innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("POST", "../php/send-email.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("firstName="+firstName.value+"&lastName="+lastName.value+"&email="+email.value+"&message="+message.value);
+        }
+        
+      });
+
+      
   
   })()  
